@@ -1,0 +1,352 @@
+/* ============================================================
+   Meghna Yadav — academic site
+   Palette, type scale and layout tokens live here.
+   Edit colors in one place: the :root block below.
+   ============================================================ */
+
+:root {
+  /* Light palette */
+  --bg:          #f7f9f8;
+  --surface:     #ffffff;
+  --ink:         #13201c;
+  --ink-muted:   #5b6a64;
+  --ink-faint:   #7d8b85;
+  --rule:        #dde5e1;
+  --accent:      #1d6b58;
+  --accent-soft: #e8f1ed;
+
+  /* Type */
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans:  "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono:  "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Layout */
+  --measure: 44rem;
+  --gutter: 1.5rem;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:          #0f1513;
+    --surface:     #151d1a;
+    --ink:         #e7ede9;
+    --ink-muted:   #9aa9a3;
+    --ink-faint:   #7d8c86;
+    --rule:        #26322d;
+    --accent:      #74c2a8;
+    --accent-soft: #19271f;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg:          #0f1513;
+  --surface:     #151d1a;
+  --ink:         #e7ede9;
+  --ink-muted:   #9aa9a3;
+  --ink-faint:   #7d8c86;
+  --rule:        #26322d;
+  --accent:      #74c2a8;
+  --accent-soft: #19271f;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+}
+
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-block: 1.5rem 1.1rem;
+}
+
+.site-name {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-name:hover { color: var(--accent); }
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.35rem;
+}
+
+.site-nav a {
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid transparent;
+}
+
+.site-nav a:hover { color: var(--accent); }
+
+.site-nav a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Main ---------- */
+
+main { padding-block: 2.75rem 3.5rem; }
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+a:hover { text-decoration-color: var(--accent); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 1.3rem + 2vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.35rem;
+  text-wrap: balance;
+}
+
+h2 {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 1.1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 {
+  font-family: var(--serif);
+  font-size: 1.1875rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 0 0 0.3rem;
+  text-wrap: balance;
+}
+
+p { margin: 0 0 1.1rem; }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- Intro block (home) ---------- */
+
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.portrait {
+  width: 160px;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 3px;
+  object-fit: cover;
+  background: var(--accent-soft);
+  flex-shrink: 0;
+}
+
+/* Placeholder shown until a real photo is added. Delete once you
+   swap in <img class="portrait" src="images/photo.jpg" ...> */
+.portrait-placeholder {
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  color: var(--accent);
+  border: 1px solid var(--rule);
+}
+
+.intro-text { flex: 1 1 15rem; min-width: 0; }
+
+.intro-text h1 { margin-bottom: 0.15rem; }
+
+.role {
+  font-size: 1rem;
+  color: var(--ink-muted);
+  margin: 0 0 0.9rem;
+}
+
+.contact-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+}
+
+.lede { font-size: 1.125rem; }
+
+/* ---------- Sections ---------- */
+
+section + section { margin-top: 2.75rem; }
+
+.section-note {
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- Entry list: mono year rail + content ---------- */
+
+.entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 0.35rem 1.25rem;
+  align-items: baseline;
+}
+
+.entry-year {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-faint);
+  line-height: 1.7;
+}
+
+.entry-body { min-width: 0; }
+
+.entry-body p { margin-bottom: 0.4rem; }
+
+.entry-meta {
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+  margin: 0;
+}
+
+.entry-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* Simple bulleted lists used on the CV page */
+.plain-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.plain-list .entry-body strong { font-weight: 600; }
+
+.tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+  vertical-align: 0.1em;
+  white-space: nowrap;
+}
+
+.pdf-link {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  margin-bottom: 2rem;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding-block: 1.5rem 2rem;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+}
+
+.site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  justify-content: space-between;
+}
+
+/* ---------- Narrow screens ---------- */
+
+@media (max-width: 34rem) {
+  body { font-size: 1rem; }
+
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .entry-year { order: -1; }
+
+  .portrait { width: 120px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
