@@ -1,24 +1,23 @@
 /* ============================================================
    Meghna Yadav — academic site
-   Palette, type scale and layout tokens live here.
-   Edit colors in one place: the :root block below.
+   Type: Lora (headings + body), Lato (nav, labels, years).
+   Palette is neutral — no accent color. Edit the :root block.
    ============================================================ */
 
 :root {
   /* Light palette */
-  --bg:          #f7f9f8;
+  --bg:          #fdfdfc;
   --surface:     #ffffff;
-  --ink:         #13201c;
-  --ink-muted:   #5b6a64;
-  --ink-faint:   #7d8b85;
-  --rule:        #dde5e1;
-  --accent:      #1d6b58;
-  --accent-soft: #e8f1ed;
+  --ink:         #1a1a18;
+  --ink-muted:   #5f5f5a;
+  --ink-faint:   #86857e;
+  --rule:        #e3e2dd;
+  --link-line:   #b9b8b1;
+  --chip:        #f1f0ec;
 
   /* Type */
-  --serif: "Newsreader", Georgia, "Times New Roman", serif;
-  --sans:  "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --mono:  "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --serif: "Lora", Georgia, "Times New Roman", serif;
+  --sans:  "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 
   /* Layout */
   --measure: 44rem;
@@ -29,27 +28,27 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg:          #0f1513;
-    --surface:     #151d1a;
-    --ink:         #e7ede9;
-    --ink-muted:   #9aa9a3;
-    --ink-faint:   #7d8c86;
-    --rule:        #26322d;
-    --accent:      #74c2a8;
-    --accent-soft: #19271f;
+    --bg:          #161614;
+    --surface:     #1c1c19;
+    --ink:         #ebeae5;
+    --ink-muted:   #a3a29b;
+    --ink-faint:   #85847d;
+    --rule:        #2e2e2a;
+    --link-line:   #57564f;
+    --chip:        #24241f;
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg:          #0f1513;
-  --surface:     #151d1a;
-  --ink:         #e7ede9;
-  --ink-muted:   #9aa9a3;
-  --ink-faint:   #7d8c86;
-  --rule:        #26322d;
-  --accent:      #74c2a8;
-  --accent-soft: #19271f;
+  --bg:          #161614;
+  --surface:     #1c1c19;
+  --ink:         #ebeae5;
+  --ink-muted:   #a3a29b;
+  --ink-faint:   #85847d;
+  --rule:        #2e2e2a;
+  --link-line:   #57564f;
+  --chip:        #24241f;
   color-scheme: dark;
 }
 
@@ -59,9 +58,9 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--sans);
+  font-family: var(--serif);
   font-size: 1.0625rem;
-  line-height: 1.65;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -97,7 +96,7 @@ body {
   text-decoration: none;
 }
 
-.site-name:hover { color: var(--accent); }
+.site-name:hover { text-decoration: underline; text-underline-offset: 4px; }
 
 .site-nav {
   display: flex;
@@ -106,6 +105,7 @@ body {
 }
 
 .site-nav a {
+  font-family: var(--sans);
   font-size: 0.9375rem;
   color: var(--ink-muted);
   text-decoration: none;
@@ -113,11 +113,11 @@ body {
   border-bottom: 1.5px solid transparent;
 }
 
-.site-nav a:hover { color: var(--accent); }
+.site-nav a:hover { color: var(--ink); }
 
 .site-nav a[aria-current="page"] {
   color: var(--ink);
-  border-bottom-color: var(--accent);
+  border-bottom-color: var(--ink);
 }
 
 /* ---------- Main ---------- */
@@ -125,17 +125,17 @@ body {
 main { padding-block: 2.75rem 3.5rem; }
 
 a {
-  color: var(--accent);
+  color: var(--ink);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
   text-decoration-thickness: 1px;
-  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  text-decoration-color: var(--link-line);
 }
 
-a:hover { text-decoration-color: var(--accent); }
+a:hover { text-decoration-color: var(--ink); }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--ink);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -144,17 +144,17 @@ h1 {
   font-family: var(--serif);
   font-size: clamp(1.75rem, 1.3rem + 2vw, 2.25rem);
   font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
   margin: 0 0 0.35rem;
   text-wrap: balance;
 }
 
 h2 {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-faint);
   margin: 0 0 1.1rem;
@@ -164,9 +164,9 @@ h2 {
 
 h3 {
   font-family: var(--serif);
-  font-size: 1.1875rem;
-  font-weight: 500;
-  line-height: 1.3;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
   margin: 0 0 0.3rem;
   text-wrap: balance;
 }
@@ -190,7 +190,7 @@ p:last-child { margin-bottom: 0; }
   aspect-ratio: 1 / 1;
   border-radius: 3px;
   object-fit: cover;
-  background: var(--accent-soft);
+  background: var(--chip);
   flex-shrink: 0;
 }
 
@@ -201,7 +201,7 @@ p:last-child { margin-bottom: 0; }
   place-items: center;
   font-family: var(--serif);
   font-size: 2.5rem;
-  color: var(--accent);
+  color: var(--ink-faint);
   border: 1px solid var(--rule);
 }
 
@@ -222,8 +222,8 @@ p:last-child { margin-bottom: 0; }
   list-style: none;
   margin: 0;
   padding: 0;
-  font-family: var(--mono);
-  font-size: 0.8125rem;
+  font-family: var(--sans);
+  font-size: 0.875rem;
 }
 
 .lede { font-size: 1.125rem; }
@@ -238,7 +238,7 @@ section + section { margin-top: 2.75rem; }
   margin-bottom: 1.5rem;
 }
 
-/* ---------- Entry list: mono year rail + content ---------- */
+/* ---------- Entry list: year rail + content ---------- */
 
 .entries {
   list-style: none;
@@ -246,22 +246,22 @@ section + section { margin-top: 2.75rem; }
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.35rem;
 }
 
 .entry {
   display: grid;
-  grid-template-columns: 6.5rem 1fr;
+  grid-template-columns: 7rem 1fr;
   gap: 0.35rem 1.25rem;
   align-items: baseline;
 }
 
 .entry-year {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 0.8125rem;
   font-variant-numeric: tabular-nums;
   color: var(--ink-faint);
-  line-height: 1.7;
+  line-height: 1.9;
 }
 
 .entry-body { min-width: 0; }
@@ -278,12 +278,12 @@ section + section { margin-top: 2.75rem; }
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  font-family: var(--mono);
-  font-size: 0.75rem;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
   margin-top: 0.5rem;
 }
 
-/* Simple bulleted lists used on the CV page */
+/* Simple lists used on the CV page */
 .plain-list {
   list-style: none;
   margin: 0;
@@ -293,27 +293,25 @@ section + section { margin-top: 2.75rem; }
   gap: 0.75rem;
 }
 
-.plain-list .entry-body strong { font-weight: 600; }
-
 .tag {
   display: inline-block;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 0.6875rem;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-soft);
+  color: var(--ink-muted);
+  background: var(--chip);
   padding: 0.15rem 0.45rem;
   border-radius: 2px;
-  vertical-align: 0.1em;
+  vertical-align: 0.12em;
   white-space: nowrap;
 }
 
 .pdf-link {
   display: inline-block;
-  font-family: var(--mono);
-  font-size: 0.8125rem;
-  margin-bottom: 2rem;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
 }
 
 /* ---------- Footer ---------- */
@@ -321,7 +319,8 @@ section + section { margin-top: 2.75rem; }
 .site-footer {
   border-top: 1px solid var(--rule);
   padding-block: 1.5rem 2rem;
-  font-size: 0.875rem;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
   color: var(--ink-faint);
 }
 
@@ -342,7 +341,7 @@ section + section { margin-top: 2.75rem; }
     gap: 0.2rem;
   }
 
-  .entry-year { order: -1; }
+  .entry-year { order: -1; line-height: 1.6; }
 
   .portrait { width: 120px; }
 }
