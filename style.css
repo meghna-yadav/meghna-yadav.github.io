@@ -6,13 +6,12 @@
 
 :root {
   /* Light palette */
-  --bg:          #fdfdfc;
-  --surface:     #ffffff;
-  --ink:         #1a1a18;
-  --ink-muted:   #5f5f5a;
-  --ink-faint:   #86857e;
-  --rule:        #e3e2dd;
-  --link-line:   #b9b8b1;
+  --bg:          #ffffff;
+  --ink:         #1b1d1f;
+  --ink-muted:   #4f5458;
+  --ink-faint:   #767b7f;
+  --rule:        #e0e0dc;
+  --link-line:   #b0b0a9;
   --chip:        #f1f0ec;
 
   /* Type */
@@ -20,7 +19,7 @@
   --sans:  "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 
   /* Layout */
-  --measure: 44rem;
+  --measure: 46rem;
   --gutter: 1.5rem;
 
   color-scheme: light;
@@ -28,27 +27,25 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg:          #161614;
-    --surface:     #1c1c19;
-    --ink:         #ebeae5;
-    --ink-muted:   #a3a29b;
-    --ink-faint:   #85847d;
-    --rule:        #2e2e2a;
-    --link-line:   #57564f;
-    --chip:        #24241f;
+    --bg:          #16171a;
+    --ink:         #eceae5;
+    --ink-muted:   #aeb2b5;
+    --ink-faint:   #8b8f92;
+    --rule:        #2f3134;
+    --link-line:   #5a5d60;
+    --chip:        #24262a;
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg:          #161614;
-  --surface:     #1c1c19;
-  --ink:         #ebeae5;
-  --ink-muted:   #a3a29b;
-  --ink-faint:   #85847d;
-  --rule:        #2e2e2a;
-  --link-line:   #57564f;
-  --chip:        #24241f;
+  --bg:          #16171a;
+  --ink:         #eceae5;
+  --ink-muted:   #aeb2b5;
+  --ink-faint:   #8b8f92;
+  --rule:        #2f3134;
+  --link-line:   #5a5d60;
+  --chip:        #24262a;
   color-scheme: dark;
 }
 
@@ -59,10 +56,8 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  font-size: 1.1rem;
+  line-height: 1.65;
 }
 
 .wrap {
@@ -91,7 +86,6 @@ body {
   font-family: var(--serif);
   font-size: 1.25rem;
   font-weight: 500;
-  letter-spacing: 0.01em;
   color: var(--ink);
   text-decoration: none;
 }
@@ -122,7 +116,7 @@ body {
 
 /* ---------- Main ---------- */
 
-main { padding-block: 2.75rem 3.5rem; }
+main { padding-block: 2.5rem 3.5rem; }
 
 a {
   color: var(--ink);
@@ -142,11 +136,10 @@ a:hover { text-decoration-color: var(--ink); }
 
 h1 {
   font-family: var(--serif);
-  font-size: clamp(1.75rem, 1.3rem + 2vw, 2.25rem);
+  font-size: clamp(1.7rem, 1.3rem + 1.8vw, 2.1rem);
   font-weight: 500;
   line-height: 1.2;
-  letter-spacing: -0.005em;
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.75rem;
   text-wrap: balance;
 }
 
@@ -157,7 +150,7 @@ h2 {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-faint);
-  margin: 0 0 1.1rem;
+  margin: 0 0 1.25rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--rule);
 }
@@ -167,31 +160,36 @@ h3 {
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.4;
-  margin: 0 0 0.3rem;
+  margin: 0 0 0.25rem;
   text-wrap: balance;
 }
 
 p { margin: 0 0 1.1rem; }
 p:last-child { margin-bottom: 0; }
 
-/* ---------- Intro block (home) ---------- */
+/* ---------- Home: photo column + bio ---------- */
 
 .intro {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 2.25rem;
+  align-items: start;
+}
+
+.intro-side {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 1.75rem;
-  margin-bottom: 2.5rem;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-width: 0;
 }
 
 .portrait {
-  width: 160px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 190px;
   aspect-ratio: 1 / 1;
   border-radius: 3px;
   object-fit: cover;
   background: var(--chip);
-  flex-shrink: 0;
 }
 
 /* Placeholder shown until a real photo is added. Delete once you
@@ -200,35 +198,37 @@ p:last-child { margin-bottom: 0; }
   display: grid;
   place-items: center;
   font-family: var(--serif);
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   color: var(--ink-faint);
   border: 1px solid var(--rule);
 }
 
-.intro-text { flex: 1 1 15rem; min-width: 0; }
-
-.intro-text h1 { margin-bottom: 0.15rem; }
-
 .role {
-  font-size: 1rem;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  line-height: 1.45;
   color: var(--ink-muted);
-  margin: 0 0 0.9rem;
+  margin: 0;
 }
 
-.contact-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1rem;
+.side-links {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
   font-family: var(--sans);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
 }
 
-.lede { font-size: 1.125rem; }
+.intro-bio { min-width: 0; }
+
+.lede { font-size: 1.15rem; }
 
 /* ---------- Sections ---------- */
+
+h1 + section { margin-top: 2rem; }
 
 section + section { margin-top: 2.75rem; }
 
@@ -238,7 +238,73 @@ section + section { margin-top: 2.75rem; }
   margin-bottom: 1.5rem;
 }
 
-/* ---------- Entry list: year rail + content ---------- */
+/* ---------- Papers ---------- */
+
+.papers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.paper h3 { margin-bottom: 0.35rem; }
+
+.abstract summary {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.abstract summary::-webkit-details-marker { display: none; }
+
+.abstract summary::before {
+  content: "+";
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.abstract[open] summary::before { content: "\2013"; }
+
+.abstract summary:hover { color: var(--ink); }
+
+.abstract p {
+  margin: 0.65rem 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule);
+  font-size: 1rem;
+  color: var(--ink-muted);
+}
+
+/* ---------- Teaching ---------- */
+
+.courses {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.course p {
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+  margin: 0 0 0.2rem;
+}
+
+.course p:last-child { margin-bottom: 0; }
+
+/* ---------- Entry list: year rail + content (unused pages) ---------- */
 
 .entries {
   list-style: none;
@@ -266,52 +332,32 @@ section + section { margin-top: 2.75rem; }
 
 .entry-body { min-width: 0; }
 
-.entry-body p { margin-bottom: 0.4rem; }
-
 .entry-meta {
+  font-family: var(--sans);
   color: var(--ink-muted);
   font-size: 0.9375rem;
   margin: 0;
-}
-
-.entry-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  font-family: var(--sans);
-  font-size: 0.8125rem;
-  margin-top: 0.5rem;
-}
-
-/* Simple lists used on the CV page */
-.plain-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.tag {
-  display: inline-block;
-  font-family: var(--sans);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  background: var(--chip);
-  padding: 0.15rem 0.45rem;
-  border-radius: 2px;
-  vertical-align: 0.12em;
-  white-space: nowrap;
 }
 
 .pdf-link {
-  display: inline-block;
   font-family: var(--sans);
   font-size: 0.9375rem;
+}
+
+.pdf-embed {
+  display: block;
+  width: 100%;
+  height: 80vh;
+  min-height: 420px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--chip);
+}
+
+.pdf-embed p {
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  padding: 1.25rem;
 }
 
 /* ---------- Footer ---------- */
@@ -333,8 +379,15 @@ section + section { margin-top: 2.75rem; }
 
 /* ---------- Narrow screens ---------- */
 
-@media (max-width: 34rem) {
-  body { font-size: 1rem; }
+@media (max-width: 36rem) {
+  body { font-size: 1.05rem; }
+
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .portrait { max-width: 150px; }
 
   .entry {
     grid-template-columns: 1fr;
@@ -342,8 +395,6 @@ section + section { margin-top: 2.75rem; }
   }
 
   .entry-year { order: -1; line-height: 1.6; }
-
-  .portrait { width: 120px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
