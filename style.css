@@ -19,7 +19,7 @@
   --sans:  "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 
   /* Layout */
-  --measure: 60rem;
+  --measure: 58rem;
   --gutter: 1.5rem;
 
   color-scheme: light;
@@ -171,8 +171,8 @@ p:last-child { margin-bottom: 0; }
 
 .intro {
   display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 2rem;
+  grid-template-columns: 240px 1fr;
+  gap: 2.25rem;
   align-items: start;
 }
 
@@ -185,8 +185,9 @@ p:last-child { margin-bottom: 0; }
 
 .portrait {
   width: 100%;
-  max-width: 180px;
-  aspect-ratio: 1 / 1;
+  max-width: 240px;
+  /* Portrait rectangle. For a landscape photo use 3 / 2 instead. */
+  aspect-ratio: 4 / 5;
   border-radius: 3px;
   object-fit: cover;
   background: var(--chip);
@@ -277,6 +278,7 @@ section + section { margin-top: 2.75rem; }
 .abstract summary:hover { color: var(--ink); }
 
 .abstract p {
+  max-width: 36rem;
   margin: 0.65rem 0 0;
   padding-left: 1rem;
   border-left: 2px solid var(--rule);
@@ -387,7 +389,7 @@ section + section { margin-top: 2.75rem; }
     gap: 1.4rem;
   }
 
-  .portrait { max-width: 150px; }
+  .portrait { max-width: 200px; }
 
   .entry {
     grid-template-columns: 1fr;
