@@ -278,7 +278,7 @@ section + section { margin-top: 2.75rem; }
 .abstract summary:hover { color: var(--ink); }
 
 .abstract p {
-  max-width: 36rem;
+  /* max-width: 36rem; */
   margin: 0.65rem 0 0;
   padding-left: 1rem;
   border-left: 2px solid var(--rule);
