@@ -226,7 +226,7 @@ p:last-child { margin-bottom: 0; }
 .intro-bio { min-width: 0; }
 
 /* .lede { font-size: 1.15rem; } */
-.intro-bio p { font-size: 1.05rem; }
+.intro-bio p { font-size: 1rem; }
 
 /* ---------- Sections ---------- */
 
